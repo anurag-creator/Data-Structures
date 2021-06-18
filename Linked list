@@ -1,0 +1,124 @@
+#include<iostream>
+using namespace std;
+class Node{
+	public:
+		
+      	int data;
+	    Node *next;
+	    
+	    Node( int data)
+	    {
+	    	this->data=data;
+	    	next=NULL;
+		}
+	};
+		//Take input LL
+		Node* takeinput()
+		{
+			int data;
+			cin>>data;
+			Node *Head=NULL;
+			
+			while(data!=-1)
+			{
+				Node* newNode=new Node(data);
+				if(Head==NULL)
+				{
+					Head=newNode;
+				}
+				else
+				{
+					Node *temp=Head;
+					while(temp->next!=NULL)
+					{
+						temp=temp->next;
+					}
+					temp->next=newNode;
+				}
+				cin>>data;
+			}
+			return Head;
+		}
+		
+		//Print LL
+		void printLL(Node* Head)
+		{
+			Node *temp=Head;
+			while(temp!=NULL)
+			{
+				cout<<temp->data<<" ";
+				temp=temp->next;
+			}
+		}
+		
+		//Length of Linkedlist
+		int lengthofLL(Node* Head)
+		{
+			Node* temp=Head;
+			int length=0;
+			while(temp!=NULL)
+			{
+				temp=temp->next;
+				length++;
+			}
+			return length;
+		}
+	
+	//print ith Node
+	 print_ith_Node(Node* Head,int i)
+	 {
+	 	Node* temp=Head;
+	 	int length=1;
+	 	while(temp!=NULL)
+	 	{
+	 		if(length==i)
+	 		{
+	 			cout<<temp->data;
+	 	
+			}
+			length++;
+	 		temp=temp->next;
+		}
+	 }
+	 
+	 void deleteithnode(Node* Head, int i,int data )
+	 {
+	 	
+	 	Node *newNode=new Node(data);
+	 	Node *temp=Head;
+	 	int count=0;
+	 	while(count<=i)
+	 	{
+	 		temp=temp->next;
+	 		count++;
+		}
+		Node* a=temp->next;
+		temp->next=newNode;
+		newNode->next=a;
+		
+		
+			Node *temp1=Head;
+			while(temp1!=NULL)
+			{
+				cout<<temp1->data<<" ";
+				temp1=temp1->next;
+			}
+	 }
+
+int main()
+{
+	//take input
+	Node* Head=takeinput();
+	//print LL
+	printLL(Head);
+	cout<<endl;
+	//Length of LL
+	cout<<"Length of LL "<<lengthofLL(Head)<<endl;
+	//print ith element in LL
+	 print_ith_Node(Head,3); 
+	 
+	 //Delete ith Node from LL
+	 deleteithnode(Head,3,6);
+	 //print after deletion
+//	printLL(Head);
+}
