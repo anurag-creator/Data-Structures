@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        int past=0;
+        int max=0;
+        for(auto x:gain){
+            past+=x;
+            if(past>max){
+                max=past;
+            }
+        }
+        return max;
+    }
+};
+int main(){
+    vector<int> v={-4,-3,-2,-1,4,3,2};
+    Solution s;
+    cout<<s.largestAltitude(v)<<endl;
+}
